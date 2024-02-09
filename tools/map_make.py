@@ -34,10 +34,10 @@ class MapSource:
 import struct
 
 def read_map(file):
-    f = open(file, "rb")
-    w = struct.unpack('i', f.read(4))[0]
-    h = struct.unpack('i', f.read(4))[0]
-    src = f.read()
+    with open(file, "rb") as f:
+        w = struct.unpack('i', f.read(4))[0]
+        h = struct.unpack('i', f.read(4))[0]
+        src = f.read()
     print(type(src))
     return MapSource(w,h,src) 
 
